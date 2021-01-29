@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.mapper.ItemMapper">
+	<!--留着以后用  -->
+
+
+<!--1.可以将数据封装为map集合  key=ids  value 数组
+2.Mybatis中只允许单值传参,
+3.如果遇到多值传参,一般将多值封装为单值  利用Map集合封装
+高版本的条件中 一般都是自动封装-->
+	<delete id="deleteIDs">
+		delete from tb_item where id in
+		<foreach collection="ids" open="(" close=")" separator="," item="id">
+			#{id}
+		</foreach>
+
+	</delete>
+
+</mapper>
